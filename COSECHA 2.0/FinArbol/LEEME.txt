@@ -1,0 +1,119 @@
+Cosecha - Guia de finanzas personales con IA (Ollama) y arbol general
+
+QUE HACE
+  Una IA local (Ollama, modelo llama3.2:1b) conversa con la persona, le hace preguntas puntuales con botones y la
+  lleva por un ARBOL de temas de finanzas personales, de lo general a lo especifico:
+      Finanzas Personales > Ahorro > Fondo de emergencia
+  En cada paso la pantalla muestra SOLO las opciones de ese nivel (tarjetas que giran alrededor del
+  tema actual). La persona puede responder escribiendo en el chat o tocando una tarjeta. Cuando llega a
+  un tema que le interesa, ve su ficha (que es, ejemplo, consejos) y practica con la calculadora del tema.
+
+COMO EJECUTARLO
+  1. Instala Ollama y, una sola vez, en una terminal:   ollama pull llama3.2:1b
+  2. Deja Ollama abierto (o ejecuta "ollama serve").
+  3. Abre esta carpeta en Visual Studio Code y ejecuta:  python main.py
+  No hay que instalar librerias de Python (Python 3.10+ con Tkinter).
+  Arriba a la derecha de la app se ve si la IA esta conectada; si no, al hacer clic ahi reintenta.
+
+COMO SABER QUE ESTA CONECTADA
+  - Arriba a la derecha: "IA conectada · llama3.2:1b" (verde). Si no, sale en rojo y se reintenta con un clic.
+  - Cada mensaje de la IA lleva la etiqueta "llama3.2:1b · Ollama" y mientras piensa el orbe gira.
+  - Ejecuta  python verificar_ollama.py  : prueba el servidor, el modelo, una respuesta real y una decision.
+  - Todo texto de la conversacion lo escribe el modelo; si Ollama no esta, la app no inventa respuestas.
+
+EL EMBUDO DE PREGUNTAS (como se encuentra lo que busca la persona)
+  - Cada categoria del arbol trae una "pregunta" en el JSON y cada tema trae su "respuesta" (la frase que
+    diria la persona). Ejemplo:  Deuda -> "Sobre tus deudas, que quieres resolver exactamente?"
+        1 "Quiero pagar primero la deuda que mas intereses cobra"  (Metodo avalancha)
+        2 "Prefiero eliminar primero las deudas mas pequenas"      (Metodo bola de nieve)
+        3 "Quiero entender cuanto me cuesta una deuda"             (Tasa de interes)
+  - Despues de cada mensaje de la IA aparece en el chat una tarjeta amarilla con la pregunta y un boton por
+    respuesta. Al tocar uno se baja un nivel del arbol (tambien vale tocar la tarjeta del centro o escribir
+    con tus palabras: la IA decide). Con 2 o 3 preguntas se llega a un tema final.
+  - En el tema final la IA explica el concepto y aparece la ultima pregunta: "Quieres ponerlo en practica con
+    la calculadora?" -> [Si, abrir la calculadora] [Ver otro tema de la rama] [Explorar otra area desde el inicio].
+  - Las preguntas salen del arbol (siempre son correctas); la IA confirma, explica y contesta dudas.
+
+COMO FUNCIONA LA IA
+  - Responde como una IA normal: puedes preguntarle cualquier cosa de finanzas personales (aunque no este en
+    el .txt) y te contesta completo. El .txt la GUIA (como funciona el programa, temas, calculadoras), no la limita.
+  - Solo cuando sabe EXACTAMENTE que quieres resolver te lleva al tema (con su concepto completo) y pregunta
+    si quieres practicar con la calculadora. Si solo hiciste una pregunta, te responde y te sugiere un tema
+    relacionado con el boton "Ver tema".
+  - Concepto antes que practica: la calculadora solo se abre si aceptas, y el boton "Practicar" se activa
+    cuando ya se explico el tema.
+  - Para que entiendas lo que pasa: boton "Guia rapida" (se abre sola la primera vez), una linea de estado
+    bajo el escenario (1 leyendo tu mensaje, 2 escribiendo, 3 tu turno) y una nota en el chat con cada
+    decision de la IA ("Te llevo al tema X porque...").
+  - ConocimientoIA.txt (9 secciones): 1 rol, 2 como funciona el programa, 3 reglas, 4 acciones, 5 mapa de temas,
+    6 guia de enrutamiento, 7 fichas, 8 calculadoras, 9 ejemplos. Se ve en "Lo que sabe la IA". Si lo editas,
+    la IA cambia sin tocar el codigo. Si cambias el JSON, ejecuta  python generar_conocimiento.py.
+  - Cada mensaje hace dos llamadas al modelo:
+      1) DECIDIR: JSON {razon, accion, opcion, tema}. Acciones: responder, elegir, ir_a, ayuda, aclarar,
+         volver, practicar, fuera_de_tema. El programa valida la decision antes de mover el arbol.
+      2) REDACTAR: escribe la respuesta en vivo, con la conversacion real (turno por turno).
+  - Los numeros y ejemplos de las fichas salen del arbol (FinanzasPersonales.json), no de la IA.
+  - Variables opcionales: OLLAMA_HOST (por defecto http://localhost:11434) y COSECHA_MODELO (llama3.2:1b).
+
+GRAFO CON CICLOS Y PRIORIDADES CON LISTA DOBLEMENTE ENLAZADA (nuevo)
+  Ademas del arbol (jerarquia), el proyecto usa otras dos estructuras de datos:
+  1. GRAFO DIRIGIDO CON CICLOS  (grafo.py, ventana_grafo.py)
+     - Los vertices son los mismos temas del arbol; las aristas salen del campo "relacionados" del JSON y dicen que
+       conviene ver DESPUES de un tema, aunque este en otra rama (26 flechas entre 17 temas).
+     - Como algunas flechas regresan, hay 8 ciclos, por ejemplo:
+         Regla 50/30/20 > Registro de gastos > Gastos hormiga > Ahorro automatico > Fondo de emergencia > (vuelve)
+     - Lista de adyacencia; los ciclos se encuentran con DFS y el camino mas corto entre dos temas con BFS.
+     - En la app: boton "Relaciones" (dibuja el grafo, resalta ciclos y caminos) y, en un tema final, la opcion
+       "Seguir con <tema>: <motivo>" que salta a otra rama siguiendo una flecha.
+  2. LISTA DOBLEMENTE ENLAZADA PARA PRIORIDADES  (lista_doble.py, plan.py, ventana_plan.py)
+     - "Mi plan de accion" sale del DIAGNOSTICO DE SALUD FINANCIERA (la herramienta de la raiz, 8 afirmaciones).
+       diagnostico.py tiene las reglas: cada afirmacion sin marcar activa un tema con prioridad (1 alta, 2 media,
+       3 baja) y un motivo, y la prioridad depende de las otras respuestas (ej.: el fondo de emergencia es media si
+       hay "fugas" abiertas y alta si no). Cada paso se inserta en su lugar recorriendo la lista desde la cola.
+     - El plan es distinto para cada persona. Se puede subir/bajar un paso o marcarlo como hecho (solo se
+       reconectan los enlaces vecinos) y recorrer la lista al reves. Todo se guarda en plan.json.
+     - En el chat: en la primera pregunta aparece "Prefiero empezar con un diagnostico de mi salud financiera"; al
+       terminar, la IA cuenta el resultado y la tarjeta ofrece "Empezar con el paso 1". En cada tema del plan hay
+       "Ya lo hice" e "Ir al siguiente paso de mi plan".
+     - El simulador de deudas (calculos.simular_deudas) tambien usa la lista doble como cola de prioridades:
+       avalancha = mayor tasa primero, bola de nieve = menor saldo primero (mismos resultados que antes).
+  3. FILTRO DE RELEVANCIA  (lexico.py, asistente.validar, pruebas_filtro.py)
+     - La IA solo entra a un tema si la persona toca una respuesta de la pregunta o dice algo claramente relacionado.
+       El programa revisa la decision de la IA: para "elegir" o "ir_a" el mensaje debe compartir palabras (por su
+       raiz) con ese tema, su respuesta o sus palabras clave; si no, no se mueve nada.
+     - Mensaje sobre dinero sin tema claro -> la IA solo responde. Mensaje incoherente o sin relacion con finanzas ->
+       "fuera_de_tema": la IA dice que eso no tiene que ver con lo que hace Cosecha y no avanza en la guia.
+     - Palabras sueltas o sonidos ("pen", "ayyyhostia") no mueven nada: ninguna accion de la IA (elegir, practicar, ayuda,
+       volver, aclarar...) vale si el mensaje no habla de dinero ni da una orden clara. La respuesta de rechazo se
+       redacta sin historial para que la IA no se ponga a hablar del tema ajeno.
+     - Prueba:  python pruebas_filtro.py
+  Prueba de las estructuras:  python pruebas_estructuras.py   (lista doble contra una lista normal, plan, ciclos).
+  Para cambiar las reglas del plan se edita diagnostico.py; para cambiar relaciones, FinanzasPersonales.json y luego
+  python generar_conocimiento.py.
+
+ARBOL
+  Tipo: arbol general (n-ario), enraizado y ordenado.  Orden: 5.  24 nodos, 16 hojas, altura 3.
+  Busca los comentarios "[ARBOL]" (con tilde en el codigo) para ver donde se emplea el arbol.
+
+ARCHIVOS
+  FinanzasPersonales.json   el arbol de temas (valor, hijos, pregunta, respuesta, descripcion, ejemplo, consejos, herramienta)
+  ConocimientoIA.txt        informacion que recibe la IA
+  verificar_ollama.py       prueba que Ollama responde de verdad
+  generar_conocimiento.py   genera ConocimientoIA.txt a partir del arbol
+  nodo.py, arbol.py         NodoArbol y ArbolGeneral (recorridos, busqueda, JSON <-> arbol)
+  guia.py                   GuiaArbol: en que tema esta la persona y como se mueve por el arbol
+  ia_ollama.py              cliente HTTP de Ollama (JSON y texto en vivo)
+  conocimiento.py           lee ConocimientoIA.txt
+  ayuda.py                  ventana "Guia rapida"
+  asistente.py              la IA: decidir() y redactar()
+  lista_doble.py, plan.py, diagnostico.py   lista doblemente enlazada, plan personal y reglas diagnostico -> plan
+  grafo.py                  grafo dirigido de relaciones entre temas (ciclos, DFS, BFS)
+  ventana_plan.py, ventana_grafo.py   ventanas "Mi plan" y "Relaciones"
+  pruebas_estructuras.py    pruebas de las estructuras de datos
+  escenario.py              lienzo animado con las opciones y la ficha del tema
+  chat.py, minimapa.py      panel de conversacion y mapa del recorrido
+  disenio.py                posicion de cada nodo en el minimapa (PostOrden)
+  calculos.py, formato.py   formulas financieras y formato de numeros
+  herramientas.py, ventanas_herramienta.py, graficos.py   calculadoras y graficos
+  componentes.py, estilos.py   botones, tarjetas, colores y tipografias
+  ventana.py                ventana principal    |    main.py   punto de entrada

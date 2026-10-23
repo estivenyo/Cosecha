@@ -1,0 +1,441 @@
+{
+  "valor": "Finanzas Personales",
+  "pregunta": "¿Qué parte de tu dinero quieres atender primero?",
+  "descripcion": "Las finanzas personales son las decisiones con las que administras tu dinero: cuánto ganas, cuánto gastas, cuánto ahorras, cuánto debes y cómo haces crecer lo que te sobra. Lo importante no es ganar mucho, sino tener un plan y seguirlo.",
+  "ejemplo": "Dos personas ganan $2.500.000 al mes. Una gasta sin registrar y termina el mes en deuda. La otra reparte su ingreso con un plan: en un año ya tiene un colchón para emergencias y ninguna deuda nueva.",
+  "consejos": [
+    "Sigue este orden: presupuesto, fondo de emergencia, pagar deudas caras, ahorrar con metas e invertir.",
+    "Empieza con montos pequeños: el hábito pesa más que la cantidad.",
+    "Revisa tu plan una vez al mes y ajústalo cuando cambie tu vida."
+  ],
+  "herramienta": "diagnostico",
+  "hijos": [
+    {
+      "valor": "Presupuesto",
+      "respuesta": "Quiero ordenar mis gastos y mi presupuesto",
+      "pregunta": "Dentro del presupuesto, ¿qué es lo que más quieres resolver?",
+      "descripcion": "Un presupuesto es un plan que le asigna un destino a cada peso de tu ingreso antes de gastarlo. Te muestra a dónde se va tu dinero y te permite decidir, en lugar de preguntarte a fin de mes qué pasó.",
+      "ejemplo": "Con un ingreso de $2.500.000 anotas tus gastos fijos (arriendo, servicios), los variables (comida, transporte, ocio) y tu ahorro. Si la suma supera el ingreso, ya sabes dónde recortar.",
+      "consejos": [
+        "Primero paga lo esencial, luego ahorra, y al final gasta en deseos.",
+        "Usa promedios de los últimos 3 meses, no cálculos de memoria.",
+        "Un presupuesto que no puedes cumplir no sirve: hazlo realista."
+      ],
+      "herramienta": "presupuesto",
+      "hijos": [
+        {
+          "valor": "Regla 50/30/20",
+          "respuesta": "No sé cómo repartir mi ingreso del mes",
+          "descripcion": "Es una guía simple para repartir tu ingreso neto: 50% para necesidades (vivienda, comida, transporte, servicios), 30% para deseos (salidas, suscripciones, compras) y 20% para ahorro y pagos extra de deudas.",
+          "ejemplo": "Con $2.500.000: $1.250.000 para necesidades, $750.000 para deseos y $500.000 para ahorro o deudas.",
+          "consejos": [
+            "Es un punto de partida: si tus necesidades pesan más del 50%, ajusta los porcentajes sin culpa.",
+            "Aplícala sobre lo que realmente recibes, después de descuentos.",
+            "Automatiza el 20% el mismo día que te pagan."
+          ],
+          "herramienta": "regla_50_30_20",
+          "relacionados": [
+            {
+              "tema": "Registro de gastos",
+              "motivo": "Para cumplir los porcentajes necesitas saber cuánto gastas de verdad"
+            }
+          ]
+        },
+        {
+          "valor": "Registro de gastos",
+          "respuesta": "Quiero saber en qué se me va el dinero",
+          "descripcion": "Consiste en anotar cada gasto, sea en papel, en una hoja de cálculo o en una app. Sin datos reales, cualquier presupuesto es una suposición; con ellos descubres patrones y fugas de dinero.",
+          "ejemplo": "Al anotar durante un mes ves que gastaste $380.000 en domicilios, casi el doble de lo que creías. Con ese dato decides cuánto reducir.",
+          "consejos": [
+            "Anota el gasto en el momento: al final del día se olvidan los pequeños.",
+            "Usa pocas categorías (6 a 8) para que el hábito sea fácil.",
+            "Revisa el total por categoría cada semana."
+          ],
+          "herramienta": "registro_gastos",
+          "relacionados": [
+            {
+              "tema": "Gastos hormiga",
+              "motivo": "El registro deja ver los gastos pequeños que se escapan"
+            },
+            {
+              "tema": "Fraudes en línea",
+              "motivo": "Revisar tus movimientos te ayuda a detectar cobros que no hiciste"
+            }
+          ]
+        },
+        {
+          "valor": "Gastos hormiga",
+          "respuesta": "Se me van los gastos pequeños de todos los días",
+          "descripcion": "Son gastos pequeños y frecuentes que pasan desapercibidos: un café, un snack, una propina, un trayecto corto en taxi. Individualmente parecen inofensivos, pero juntos pueden sumar una parte importante de tu ingreso.",
+          "ejemplo": "Un gasto diario de $4.500, cinco veces por semana, suma $97.500 al mes y $1.170.000 al año.",
+          "consejos": [
+            "No tienes que eliminarlos todos: elige los que menos disfrutas.",
+            "Ponte un tope semanal o paga en efectivo para notarlos.",
+            "Redirige lo recortado a tu fondo de emergencia."
+          ],
+          "herramienta": "hormiga",
+          "relacionados": [
+            {
+              "tema": "Ahorro automático",
+              "motivo": "Lo que recuperas de los gastos pequeños puedes guardarlo sin pensarlo"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "valor": "Ahorro",
+      "respuesta": "Quiero ahorrar o tener un colchón",
+      "pregunta": "Cuando hablas de ahorrar, ¿qué necesitas ahora mismo?",
+      "descripcion": "Ahorrar es separar una parte de tu ingreso para el futuro en vez de gastarlo hoy. El ahorro te da seguridad ante imprevistos y te permite cumplir metas sin endeudarte.",
+      "ejemplo": "Separar $250.000 al mes durante un año produce $3.000.000, sin contar rendimientos.",
+      "consejos": [
+        "Págate primero a ti: ahorra al recibir el ingreso, no con lo que sobre.",
+        "Guarda el ahorro en una cuenta distinta a la de gastos diarios.",
+        "Dale un objetivo a cada ahorro: emergencia, meta o inversión."
+      ],
+      "hijos": [
+        {
+          "valor": "Fondo de emergencia",
+          "respuesta": "Quiero un colchón para los imprevistos",
+          "descripcion": "Es dinero reservado solo para imprevistos serios: perder el empleo, una urgencia médica o una reparación grande. La meta habitual es de 3 a 6 meses de tus gastos esenciales, guardado en una cuenta segura y de fácil acceso.",
+          "ejemplo": "Si tus gastos esenciales son $1.800.000 al mes, un fondo de 6 meses es de $10.800.000. Ahorrando $250.000 al mes te tomaría unos 43 meses.",
+          "consejos": [
+            "Empieza con un mini fondo de un mes y ve creciendo.",
+            "Guárdalo donde puedas retirarlo rápido, no en inversiones de riesgo.",
+            "Úsalo solo para emergencias reales y repónlo después."
+          ],
+          "herramienta": "fondo_emergencia",
+          "relacionados": [
+            {
+              "tema": "Regla 50/30/20",
+              "motivo": "Con un colchón en marcha, el 20% de ahorro de la regla se vuelve realista"
+            },
+            {
+              "tema": "Metas de ahorro",
+              "motivo": "Con el colchón listo ya puedes ahorrar para una meta"
+            },
+            {
+              "tema": "Tasa de interés",
+              "motivo": "Sin colchón, un imprevisto se financia con crédito y cuesta intereses"
+            }
+          ]
+        },
+        {
+          "valor": "Metas de ahorro",
+          "respuesta": "Quiero ahorrar para algo concreto (moto, viaje, estudio)",
+          "descripcion": "Una meta de ahorro tiene un monto, una fecha y un propósito: un viaje, un computador, la matrícula. Al ponerle números sabes cuánto debes separar cada mes y si tu plan es realista.",
+          "ejemplo": "Para reunir $12.000.000 en 18 meses, partiendo de $1.000.000, necesitas separar $611.000 al mes si no ganas rendimientos.",
+          "consejos": [
+            "Divide las metas grandes en hitos mensuales.",
+            "Si la cuota es demasiado alta, alarga el plazo o baja la meta.",
+            "Ponle nombre a cada meta: ahorrar para algo concreto motiva más."
+          ],
+          "herramienta": "meta_ahorro",
+          "relacionados": [
+            {
+              "tema": "Ahorro automático",
+              "motivo": "Automatiza el aporte a tu meta para no depender de la fuerza de voluntad"
+            },
+            {
+              "tema": "Renta fija",
+              "motivo": "Si la meta es a más de un año, mira inversiones seguras"
+            }
+          ]
+        },
+        {
+          "valor": "Ahorro automático",
+          "respuesta": "Me cuesta ahorrar y quiero hacerlo automático",
+          "descripcion": "Es programar una transferencia periódica desde tu cuenta de ingresos hacia tu cuenta de ahorro, de modo que ahorrar no dependa de tu fuerza de voluntad. Funciona porque el dinero se aparta antes de que lo gastes.",
+          "ejemplo": "Con un ingreso de $2.500.000, automatizar el 10% son $250.000 al mes. En 5 años, con un rendimiento del 6% anual, acumularías cerca de $17,4 millones.",
+          "consejos": [
+            "Programa la transferencia el mismo día de pago.",
+            "Sube el porcentaje cada vez que aumente tu ingreso.",
+            "Empieza con el 5% si el 10% te cuesta."
+          ],
+          "herramienta": "ahorro_automatico",
+          "relacionados": [
+            {
+              "tema": "Fondo de emergencia",
+              "motivo": "El primer destino del ahorro automático es tu colchón"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "valor": "Deuda",
+      "respuesta": "Tengo deudas y quiero salir de ellas",
+      "pregunta": "Sobre tus deudas, ¿qué quieres resolver exactamente?",
+      "descripcion": "Una deuda es dinero que recibes prestado y devuelves con intereses. No toda deuda es mala: un crédito educativo puede ser una inversión. Las más peligrosas son las de tasa alta, como la tarjeta de crédito usada para gastos corrientes.",
+      "ejemplo": "Una compra de $1.000.000 en tarjeta, pagada solo con el mínimo, termina costando bastante más que su precio original por los intereses acumulados.",
+      "consejos": [
+        "Lista todas tus deudas con saldo, tasa y pago mínimo.",
+        "No pagues solo el mínimo si puedes pagar más.",
+        "Evita adquirir una deuda nueva mientras pagas una cara."
+      ],
+      "hijos": [
+        {
+          "valor": "Método avalancha",
+          "respuesta": "Quiero pagar primero la deuda que más intereses cobra",
+          "descripcion": "Consiste en pagar el mínimo de todas tus deudas y destinar todo el dinero extra a la que tenga la tasa de interés más alta. Al terminar con ella, pasas a la siguiente tasa más alta. Matemáticamente es la forma que menos intereses cuesta.",
+          "ejemplo": "Con una tarjeta al 28% anual, una moto al 18% y un celular al 12%, todo el extra va primero a la tarjeta, aunque su saldo no sea el menor.",
+          "consejos": [
+            "Ideal si lo que más te importa es pagar menos intereses.",
+            "Requiere disciplina: la primera deuda puede tardar en caer.",
+            "Cuando liquides una deuda, suma su cuota al pago de la siguiente."
+          ],
+          "herramienta": "deudas_avalancha",
+          "relacionados": [
+            {
+              "tema": "Método bola de nieve",
+              "motivo": "Compara con el método que ataca primero las deudas pequeñas"
+            },
+            {
+              "tema": "Fondo de emergencia",
+              "motivo": "Al salir de la deuda, arma tu colchón para no volver a endeudarte"
+            },
+            {
+              "tema": "Regla 50/30/20",
+              "motivo": "Para pagar extra necesitas liberar dinero en tu presupuesto"
+            }
+          ]
+        },
+        {
+          "valor": "Método bola de nieve",
+          "respuesta": "Prefiero eliminar primero las deudas más pequeñas",
+          "descripcion": "Consiste en pagar el mínimo de todas las deudas y poner el dinero extra en la de menor saldo, sin mirar la tasa. Al liquidarla, su cuota se suma a la siguiente y el pago crece como una bola de nieve. Cuesta algo más en intereses, pero da victorias rápidas que motivan.",
+          "ejemplo": "Con deudas de $1.200.000, $3.000.000 y $6.000.000, primero eliminas la de $1.200.000, luego la de $3.000.000 y al final la mayor.",
+          "consejos": [
+            "Ideal si necesitas ver avances pronto para no rendirte.",
+            "Compáralo con la avalancha en la herramienta: a veces la diferencia es pequeña.",
+            "Celebra cada deuda liquidada, pero no vuelvas a endeudarte."
+          ],
+          "herramienta": "deudas_bola_nieve",
+          "relacionados": [
+            {
+              "tema": "Método avalancha",
+              "motivo": "Compara con el método que ahorra más intereses"
+            },
+            {
+              "tema": "Regla 50/30/20",
+              "motivo": "Para pagar extra necesitas liberar dinero en tu presupuesto"
+            }
+          ]
+        },
+        {
+          "valor": "Tasa de interés",
+          "respuesta": "Quiero entender cuánto me cuesta una deuda",
+          "descripcion": "La tasa de interés es el precio del dinero prestado. Puede expresarse como efectiva anual (EA) o nominal mensual; para comparar créditos usa siempre la misma base. Una tasa más baja o un plazo más corto reducen lo que pagas en intereses.",
+          "ejemplo": "Un préstamo de $5.000.000 al 24% EA a 24 meses tiene una cuota cercana a $258.700 y cuesta unos $1,2 millones en intereses.",
+          "consejos": [
+            "Compara créditos por tasa EA y por costo total, no solo por la cuota.",
+            "Pregunta por comisiones, seguros y costos adicionales.",
+            "Los pagos extra a capital reducen el interés futuro."
+          ],
+          "herramienta": "prestamo",
+          "relacionados": [
+            {
+              "tema": "Método avalancha",
+              "motivo": "Conocer la tasa te dice cuál deuda es la más cara"
+            },
+            {
+              "tema": "Método bola de nieve",
+              "motivo": "Conocer los saldos te dice cuál deuda eliminar primero"
+            },
+            {
+              "tema": "Certificados de depósito",
+              "motivo": "La misma tasa es lo que te paga un CDT: compara lo que cuesta una deuda con lo que rinde"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "valor": "Inversión",
+      "respuesta": "Quiero hacer crecer mi dinero invirtiendo",
+      "pregunta": "Para invertir, ¿qué te describe mejor?",
+      "descripcion": "Invertir es poner tu dinero a trabajar para que crezca con el tiempo, aceptando algún nivel de riesgo. A mayor rendimiento esperado suele haber mayor riesgo, y las inversiones deben ajustarse a tu plazo y a tu tolerancia a ver bajar su valor temporalmente.",
+      "ejemplo": "Ahorrar $300.000 mensuales durante 20 años con un rendimiento del 8% anual puede acumular más del doble de lo que aportaste.",
+      "consejos": [
+        "Invierte solo después de tener fondo de emergencia y sin deudas caras.",
+        "Invierte a largo plazo el dinero que no necesitarás pronto.",
+        "Desconfía de las promesas de ganancias altas y garantizadas."
+      ],
+      "hijos": [
+        {
+          "valor": "Renta fija",
+          "respuesta": "Prefiero algo seguro y predecible",
+          "pregunta": "¿Qué tipo de inversión segura te interesa?",
+          "descripcion": "Son inversiones donde prestas dinero a un banco, empresa o gobierno a cambio de intereses pactados de antemano. Suelen ser más estables que las acciones, aunque no están libres de riesgo: el emisor podría incumplir y los precios cambian cuando suben las tasas.",
+          "ejemplo": "Prestas $1.000.000 a un emisor por 5 años, recibes un interés anual fijo y al final te devuelven el capital.",
+          "consejos": [
+            "Sirve para metas de corto y mediano plazo.",
+            "Revisa la calificación de riesgo del emisor.",
+            "Compara el rendimiento después de impuestos y comisiones."
+          ],
+          "hijos": [
+            {
+              "valor": "Bonos",
+              "respuesta": "Quiero prestarle dinero a un gobierno o empresa",
+              "descripcion": "Un bono es un título de deuda: le prestas dinero a una empresa o gobierno y este se compromete a pagarte cupones periódicos de interés y a devolverte el valor nominal al vencimiento. Su precio de mercado puede subir o bajar antes de esa fecha.",
+              "ejemplo": "Un bono de $1.000.000 con cupón del 9% anual paga $90.000 cada año durante 5 años y, al final, devuelve los $1.000.000.",
+              "consejos": [
+                "Si lo mantienes hasta el vencimiento, conoces tus pagos de antemano.",
+                "Si las tasas suben, el precio de los bonos ya emitidos tiende a bajar.",
+                "Mira la calificación crediticia del emisor."
+              ],
+              "herramienta": "bonos",
+              "relacionados": [
+                {
+                  "tema": "Diversificación",
+                  "motivo": "Los bonos reparten el riesgo frente a las acciones"
+                }
+              ]
+            },
+            {
+              "valor": "Certificados de depósito",
+              "respuesta": "Quiero un depósito a plazo con interés fijo",
+              "descripcion": "Es un producto de un banco donde inmovilizas tu dinero por un plazo fijo y recibes una tasa pactada. Suelen ser de bajo riesgo y fáciles de entender, pero retirar antes del plazo puede implicar perder rendimientos o no ser posible.",
+              "ejemplo": "Con $5.000.000 al 10% EA durante 180 días, el rendimiento bruto es de unos $240.600.",
+              "consejos": [
+                "Compáralos entre bancos: la tasa puede variar bastante.",
+                "Elige un plazo que coincida con cuándo necesitarás el dinero.",
+                "Verifica que la entidad esté vigilada por la autoridad financiera."
+              ],
+              "herramienta": "cdt",
+              "relacionados": [
+                {
+                  "tema": "Tasa de interés",
+                  "motivo": "Entender la tasa efectiva anual te ayuda a comparar CDT"
+                },
+                {
+                  "tema": "Diversificación",
+                  "motivo": "Un CDT es una pieza más de un portafolio repartido"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "valor": "Renta variable",
+          "respuesta": "Acepto algo de riesgo para ganar más",
+          "pregunta": "¿Cómo te gustaría invertir en el mercado?",
+          "descripcion": "Son inversiones cuyo rendimiento no está pactado y depende del mercado, como las acciones y los fondos que las contienen. Pueden crecer mucho en el largo plazo, pero también bajar de valor en el corto.",
+          "ejemplo": "Una acción puede subir 15% un año y bajar 20% al siguiente; quien invierte a largo plazo debe tolerar esas oscilaciones.",
+          "consejos": [
+            "Invierte solo dinero que no necesites a corto plazo.",
+            "No pongas todo tu dinero en una sola empresa.",
+            "Evita decidir por pánico cuando el mercado cae."
+          ],
+          "hijos": [
+            {
+              "valor": "Acciones",
+              "respuesta": "Quiero ser dueño de una parte de una empresa",
+              "descripcion": "Una acción es una pequeña parte de la propiedad de una empresa. Puedes ganar si el precio sube y, a veces, por dividendos, que son una parte de las utilidades. También puedes perder parte o todo el capital si a la empresa le va mal.",
+              "ejemplo": "Compras 50 acciones a $10.000 y las vendes a $11.500: ganas $75.000 antes de comisiones, más los dividendos que hayas recibido.",
+              "consejos": [
+                "Entiende el negocio antes de comprar.",
+                "Cuenta las comisiones: reducen tu ganancia real.",
+                "Para empezar, un fondo diversificado suele ser más prudente que una sola acción."
+              ],
+              "herramienta": "acciones",
+              "relacionados": [
+                {
+                  "tema": "Diversificación",
+                  "motivo": "Una sola acción es muy riesgosa: reparte"
+                }
+              ]
+            },
+            {
+              "valor": "Fondos indexados",
+              "respuesta": "Quiero invertir en todo el mercado de forma simple",
+              "descripcion": "Un fondo indexado reúne el dinero de muchos inversionistas para replicar un índice de mercado en lugar de escoger empresas una por una. Ofrece diversificación inmediata y comisiones bajas, por lo que es una opción común para el largo plazo.",
+              "ejemplo": "Aportando $300.000 al mes durante 20 años con un rendimiento neto del 8% anual, el fondo superaría los $170 millones, de los cuales solo $72 millones serían aportes tuyos.",
+              "consejos": [
+                "Fíjate en la comisión anual: pequeñas diferencias se acumulan.",
+                "Aporta de forma constante, sin intentar adivinar el mejor momento.",
+                "Los rendimientos pasados no garantizan los futuros."
+              ],
+              "herramienta": "fondos_indexados",
+              "relacionados": [
+                {
+                  "tema": "Acciones",
+                  "motivo": "Un fondo indexado es una canasta de acciones"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "valor": "Diversificación",
+          "respuesta": "Quiero no poner todo mi dinero en un solo lugar",
+          "descripcion": "Diversificar es repartir tu dinero entre distintos tipos de inversión para que una mala noticia en una no golpee todo tu portafolio. Es el viejo consejo de no poner todos los huevos en la misma canasta: no elimina el riesgo, pero lo reduce.",
+          "ejemplo": "Con 22 años y riesgo medio, la regla clásica «100 menos tu edad» sugiere cerca de 78% en renta variable y 22% en renta fija.",
+          "consejos": [
+            "Diversifica entre tipos de activos, sectores y países.",
+            "Rebalancea una vez al año para volver a tus porcentajes.",
+            "Ajusta el riesgo según tu plazo: más cerca de la meta, menos riesgo."
+          ],
+          "herramienta": "diversificacion",
+          "relacionados": [
+            {
+              "tema": "Fondos indexados",
+              "motivo": "Un fondo indexado diversifica en un solo paso"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "valor": "Seguridad Financiera",
+      "respuesta": "Quiero proteger mi dinero de fraudes",
+      "pregunta": "¿De qué quieres proteger tu dinero?",
+      "descripcion": "Proteger tu dinero es tan importante como ganarlo o invertirlo. La seguridad financiera incluye cuidar tus datos bancarios, reconocer fraudes y proteger tus cuentas con medidas como la verificación en dos pasos.",
+      "ejemplo": "Un solo código de verificación entregado por error a un falso asesor puede bastar para vaciar una cuenta bancaria.",
+      "consejos": [
+        "Tu banco nunca te pide claves ni códigos por llamada, SMS o chat.",
+        "Activa las alertas de transacciones en tus cuentas.",
+        "Ante la duda, cuelga y llama tú al número oficial."
+      ],
+      "hijos": [
+        {
+          "valor": "Fraudes en línea",
+          "respuesta": "Quiero reconocer estafas y fraudes",
+          "descripcion": "Son engaños para que entregues datos, claves o dinero: phishing (mensajes falsos que imitan a un banco), llamadas de falsos asesores, suplantación de familiares y falsas inversiones con ganancias «garantizadas». Casi siempre usan urgencia, miedo o promesas irreales.",
+          "ejemplo": "Un SMS dice que tu cuenta será bloqueada en 10 minutos y trae un enlace para «verificar» tu clave: es una señal clásica de fraude.",
+          "consejos": [
+            "Desconfía de la urgencia: los estafadores no quieren que pienses.",
+            "No abras enlaces de mensajes inesperados; entra desde la app oficial.",
+            "Nunca compartas contraseñas ni códigos de un solo uso."
+          ],
+          "herramienta": "fraudes",
+          "relacionados": [
+            {
+              "tema": "Autenticación en dos pasos",
+              "motivo": "El segundo factor protege tus cuentas aunque te roben la clave"
+            }
+          ]
+        },
+        {
+          "valor": "Autenticación en dos pasos",
+          "respuesta": "Quiero proteger mis cuentas con doble verificación",
+          "descripcion": "Es una capa extra de seguridad: además de tu contraseña, el sistema pide un segundo factor, como un código de una app autenticadora, una llave física o una huella. Aunque alguien robe tu contraseña, no puede entrar sin ese segundo paso.",
+          "ejemplo": "Si alguien descubre la clave de tu correo pero tienes verificación en dos pasos, aún necesita el código de tu teléfono para entrar.",
+          "consejos": [
+            "Prefiere una app autenticadora antes que el SMS cuando sea posible.",
+            "Guarda los códigos de recuperación en un lugar seguro.",
+            "Actívala primero en tu correo y en tus apps bancarias."
+          ],
+          "herramienta": "dos_pasos",
+          "relacionados": [
+            {
+              "tema": "Fraudes en línea",
+              "motivo": "El segundo factor no sirve si entregas el código: aprende a reconocer estafas"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
